@@ -1,41 +1,58 @@
-📌 KeylanceSDK — Remote Protection & Licensing for Unreal Engine (5.4 → 5.7)
+KeylanceSDK — Remote Protection for Unreal Engine (5.4 → 5.7)
+Secure any packaged Unreal Engine build with remote license control.
 
-KeylanceSDK is a lightweight security system designed to lock any Unreal Engine executable (.exe) through a remote license check.
-It lets you activate or disable a build at any time, manage expiration dates, and keep full control over client deliveries.
+KeylanceSDK is a plug-and-play system that lets you lock any Unreal Engine executable (.exe) using a remote license check.
+You can activate, deactivate, or expire builds directly from your KeylanceHub dashboard.
 
-➡️ Compatible with UE 5.4 → 5.7
-➡️ C++ subsystem
-➡️ Online API + offline fallback
-➡️ Simple integration, fast deployment
+✔ Compatible with UE 5.4 → 5.7
+✔ Plug & Play
+✔ Remote + offline validation
+✔ Blueprint-ready
+✔ Perfect for agencies, studios, freelancers, client deliveries
 
-Official website: https://aukkeproduction.fr/keylancehub
+🔗 Official website: https://aukkeproduction.fr/keylancehub
 
-Documentation: https://aukkeproduction.fr/documentation
+📘 Documentation: https://aukkeproduction.fr/documentation
 
-✨ Features
+🔥 Features
 
-🔐 Remote key verification
+🔐 Remote license verification
 
-📴 Works offline using cached protected data
+📴 Offline fallback (cached expiration)
 
-📅 Cloud-based expiration date sync
+📅 Automatic expiration sync
 
-🔄 Real-time activation/deactivation from your dashboard
+🔄 Enable/disable builds remotely
 
-🧩 Blueprint events for success/failure handling
+🧩 Includes a ready-to-use Blueprint actor
 
-🚫 Blocks execution when expired or revoked
+🚫 Blocks execution when invalid or expired
 
-⚙️ Extremely easy to integrate
+⚙️ Works in packaged .exe builds
 
-📦 Installation
+📦 Download
 
-Download the latest release:
-👉 https://github.com/Aukkeprod/KeylanceSDK/releases
+👉 Latest versions (UE 5.4 → 5.7):
+https://github.com/Aukkeprod/KeylanceSDK/releases
 
-Extract the ZIP
+🛠️ Developer Setup (Quick Guide)
+Ultra simple — Plug & Play
+⚠️ Required once: convert your project to C++
 
-Copy KeylanceSDK into:
+Unreal cannot load a C++ plugin in a pure Blueprint project.
+
+Convert your project by creating an empty class:
+Tools → New C++ Class → None → Create Class
+
+Your project remains fully Blueprint afterward.
+
+✔️ Installation
+
+Download the ZIP for your Unreal Engine version
+
+Extract it
+
+Drop the folder KeylanceSDK/ into:
 
 <YourProject>/Plugins/
 
@@ -44,75 +61,42 @@ Restart Unreal Engine
 
 Enable the plugin in Edit → Plugins
 
-🔑 Setup
-1. Get your API credentials
+⚡ Plug & Play Usage
+✔️ 1. Place the provided Blueprint actor in your level
 
-Login to KeylanceHub → Create a project → Copy:
+Location inside the plugin:
+
+Content/Keylance/Blueprints/BP_ExempleKeylance
+
+
+Drag BP_ExempleKeylance into your main map.
+
+✔️ 2. Fill in the parameters (Details panel)
 
 API Key
 
 Project Key
 
-2. Unreal Project Settings
+bIsProtected
 
-Go to Project Settings → Keylance Protection and fill:
+That’s it.
+No C++ coding required.
 
-Apikey
+🎁 What the Blueprint handles automatically
 
-ProjectKey
+License verification on startup
 
-Enable bIsProtected
+Cached offline validation
 
-Done.
+Expiration enforcement
 
-▶️ Usage
-Check the license on startup (C++)
-UKeylanceSubsystem* KL = GetGameInstance()->GetSubsystem<UKeylanceSubsystem>();
-KL->CheckKey();
+Remote disable detection
 
-Events Blueprint
+Automatic Success / Failed events
 
-OnRequestSuccess → license valid
+Automatic blocking if invalid
 
-OnRequestFailed → invalid/expired
-
-OnProjectUnprotected → server protection disabled
-
-🛡️ Offline behavior
-
-If the server is unreachable, KeylanceSDK safely falls back on:
-
-locally cached expiration date
-
-previous server validation
-
-local protection flag
-
-If the stored expiration date is passed → the project remains locked.
-
-📁 Plugin structure
-
-KeylanceSubsystem → main logic
-
-LocalDataSave → encrypted offline store
-
-ExposeOnPS → project settings
-
-Server-side: VerifKey.php for API validation
-
-🧩 Minimal Blueprint setup
-
-Open your GameInstance
-
-Use Event Init
-
-Call Get Keylance Subsystem → Check Key
-
-Bind events:
-
-success → start your game
-
-fail → quit or display a message
+You only drag one actor and set your keys.
 
 📄 License
 
