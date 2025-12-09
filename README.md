@@ -1,9 +1,9 @@
-📌 KeylanceSDK — Remote Protection & Licensing for Unreal Engine (5.3 → 5.7)
+📌 KeylanceSDK — Remote Protection & Licensing for Unreal Engine (5.4 → 5.7)
 
 KeylanceSDK is a lightweight security system designed to lock any Unreal Engine executable (.exe) through a remote license check.
 It lets you activate or disable a build at any time, manage expiration dates, and keep full control over client deliveries.
 
-➡️ Compatible with UE 5.3 → 5.7
+➡️ Compatible with UE 5.4 → 5.7
 ➡️ C++ subsystem
 ➡️ Online API + offline fallback
 ➡️ Simple integration, fast deployment
